@@ -2,7 +2,7 @@
 
 This example demonstrates the process of interactive coding and experimentation using the Google Vertex AI Workbench for data scientists. The guide outlines the creation of a machine learning (ML) pipeline within a notebook on a Google Vertex AI Workbench Instance.
 
-**Target Version:** `terraform-google-enterprise-genai` **v0.12.0**
+**IMPORTANT**: The target version for this example is `terraform-google-enterprise-genai` `v0.11.0`. It is expected that the foundational deployment of `terraform-google-enterprise-genai` was executed using version `v0.11.0`. Ensure that the foundation stages (0-bootstrap through 5-app-infra) have been deployed using this version before proceeding with this example.
 
 This environment is set up for interactive coding and experimentations. After the project is up, the vertex workbench will be deployed from the base environment module on `/modules/base_env/main.tf` and the data scientists can use it to write their data processing code and pipeline components. In addition, a cloud storage bucket should be deployed to use as the storage for our operations. Optionally, a composer environment can be setup to schedule the pipeline run on intervals.
 
@@ -696,6 +696,28 @@ The `GITHUB_REMOTE_URI` value can be retrieved by creating a new github reposito
    ```bash
    cd ..
    ```
+
+#### Resulting Repository Structure
+
+After completing the Cloud Build deployment steps above, the `ml-machine-learning` repository will be structured as follows:
+
+```text
+ml-machine-learning/
+├── assets/
+│   ├── Composer/
+│   ├── Vertexpipeline/
+│   └── vpc-sc-policies/
+├── ml_business_unit/
+│   ├── development/
+│   ├── nonproduction/
+│   └── production/
+├── modules/
+│   └── base_env/
+├── cloudbuild-tf-apply.yaml
+├── cloudbuild-tf-plan.yaml
+├── common.auto.tfvars
+└── tf-wrapper.sh
+```
 
 ### VPC-SC - Infrastructure Deployment with Local Terraform - Only proceed with these if you have not used Cloud Build
 
