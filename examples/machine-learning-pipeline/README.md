@@ -2,8 +2,6 @@
 
 This example demonstrates the process of interactive coding and experimentation using the Google Vertex AI Workbench for data scientists. The guide outlines the creation of a machine learning (ML) pipeline within a notebook on a Google Vertex AI Workbench Instance.
 
-**IMPORTANT**: The target version for this example is `terraform-google-enterprise-genai` `v0.11.0`. It is expected that the foundational deployment of `terraform-google-enterprise-genai` was executed using version `v0.11.0`. Ensure that the foundation stages (0-bootstrap through 5-app-infra) have been deployed using this version before proceeding with this example.
-
 This environment is set up for interactive coding and experimentations. After the project is up, the vertex workbench will be deployed from the base environment module on `/modules/base_env/main.tf` and the data scientists can use it to write their data processing code and pipeline components. In addition, a cloud storage bucket should be deployed to use as the storage for our operations. Optionally, a composer environment can be setup to schedule the pipeline run on intervals.
 
 Each environment, Development, nonproduction and Production have their own purpose and they are not a mirror from the previous environment.
@@ -28,12 +26,26 @@ The production environment will provide an endpoint in the project which you can
 
 ## Prerequisites
 
-1. 0-bootstrap executed successfully.
-1. 1-org executed successfully.
-1. 2-environments executed successfully.
-1. 3-networks executed successfully.
-1. 4-projects executed successfully.
-1. 5-app-infra executed successfully.
+**Note:** It is expected that the foundational deployment of `terraform-google-enterprise-genai` was executed using version `v0.11.0`. Ensure that the foundation stages (0-bootstrap through 5-app-infra) have been deployed using this version before proceeding with this example to ensure full compatibility with the underlying foundation modules and security policies.
+
+1. `0-bootstrap` executed successfully.
+1. `1-org` executed successfully.
+1. `2-environments` executed successfully.
+1. `3-networks` executed successfully.
+1. `4-projects` executed successfully.
+1. `5-app-infra` executed successfully.
+1. Ensure your local workspace directory is structured with all foundation repositories and the blueprint cloned side by side at the same level:
+
+```text
+.
+├── terraform-google-enterprise-genai/
+├── gcp-bootstrap/
+├── gcp-org/
+├── gcp-environments/
+├── gcp-networks/
+└── gcp-projects/
+```
+
 1. The step below named `VPC-SC` executed successfully, configuring the VPC-SC rules that allows running the example.
 
 **IMPORTANT**: The steps below are specific if you are deploying via `Cloud Build`. If you are deploying using Local Terraform, skip directly to the `VPC-SC - Infrastructure Deployment with Local Terraform` section.
