@@ -1,6 +1,6 @@
 # Standalone Example
 
-This examples deploys the Enterprise GenAI blueprint.
+This example deploys the Enterprise Agent Platform blueprint.
 
 This example also creates the resources required to deploy the blueprint that are expected to be provided by the user. We call these resources the _external harness_.
 
@@ -31,7 +31,6 @@ A random suffix is added to the end of the names to create unique project IDs an
 
 The Blueprint deployment includes:
 
-- The deployment of the [main module](../../main.tf) itself.
 - The configuration of Organization Policies to restrict unapproved services, enforce specific TLS versions, and whitelist allowed Vertex AI notebook base images and access modes.
 - The Cloud KMS infrastructure for Customer-Managed Encryption Keys (CMEK):
   - A Cloud KMS Keyring.
@@ -78,7 +77,7 @@ Grant the following roles to the service account:
 
 ## Google Cloud Locations
 
-This example is deployed in the `us-central1` location by default. To deploy in another location, change the `default_region` in your `terraform.tfvars` file. By default, the blueprint has an Organization Policy that only allows the creation of resources in `us-locations`. To deploy in other locations, update the `allowed_locations` input in the main module call.
+This example is deployed in the `us-central1` location by default. To deploy in another location, change the `default_region` in your `terraform.tfvars` file. By default, the blueprint has an Organization Policy that only allows the creation of resources in `us-locations`. To deploy in other locations, update the `allowed_locations` in `main.tf` under the `ml_organization_policies` module.
 
 ## Usage
 
